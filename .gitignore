@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Python local servers / caches
+__pycache__/
+*.pyc
+
+# Temporary build output
+_site/
+build/
+dist/

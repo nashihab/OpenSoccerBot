@@ -9,6 +9,18 @@ The two versions use the same control concept: a conventional hobby RC transmitt
 
 **Scope:** this repository is manual-control only. There is no autonomous navigation, ball tracking or obstacle avoidance firmware here.
 
+## Interactive website
+
+A zero-build engineering viewer is included in [`web/`](web/). It visualizes the BASIC and ADVANCED variants, wiring, RC control mapping, battery calculations, hardware, firmware structure and mecanum mixing.
+
+Run it locally with:
+
+```bash
+python -m http.server 8000
+```
+
+Then open `http://localhost:8000/web/`. The included GitHub Actions workflow publishes `web/` directly to GitHub Pages.
+
 ## 1. System architecture
 
 ![System architecture](assets/system_overview.svg)
@@ -68,7 +80,7 @@ A useful reference setup is:
 - **FlySky FS-i6 / FS-i6X transmitter**
 - **FlySky FS-iA6B receiver**
 
-FlySky lists the FS-iA6B as a six-channel 2.4 GHz receiver with PWM, PPM, i.BUS and S.BUS interfaces and a 4.0–8.4 V supply range. This project uses the individual PWM outputs because they are simple to wire and debug. citeturn998736search0
+FlySky lists the FS-iA6B as a six-channel 2.4 GHz receiver with PWM, PPM, i.BUS and S.BUS interfaces and a 4.0–8.4 V supply range. This project uses the individual PWM outputs because they are simple to wire and debug.
 
 ### BASIC channel assignment
 
@@ -184,7 +196,7 @@ Full wiring: [`assets/advanced_wiring.svg`](assets/advanced_wiring.svg) and [`do
 
 ## 6. Motor-driver limits matter
 
-The TB6612FNG is a **small brushed-motor driver**, not a general-purpose high-current controller. Toshiba specifies up to 1.2 A average output current per channel and 3.2 A peak for short pulses under the device's conditions; the operating range includes VCC 2.7–5.5 V and VM 2.5–13.5 V. citeturn303507search24turn303507search26
+The TB6612FNG is a **small brushed-motor driver**, not a general-purpose high-current controller. Toshiba specifies up to 1.2 A average output current per channel and 3.2 A peak for short pulses under the device's conditions; the operating range includes VCC 2.7–5.5 V and VM 2.5–13.5 V.
 
 Your motor choice still determines whether this driver is appropriate. Check the motor's **stall current**, because stall current can be much higher than the no-load or normal running current.
 
@@ -223,7 +235,7 @@ The motor rail carries the high-current loads. The regulated rail supplies the c
 
 ### ADVANCED power notes
 
-- TB6612 VCC: 3.3 V logic is within the IC's operating range. citeturn303507search24
+- TB6612 VCC: 3.3 V logic is within the IC's operating range.
 - TB6612 VM: battery motor rail within the driver and motor limits
 - Receiver: according to receiver specification
 - Servo: dedicated regulated 5 V rail
@@ -241,7 +253,7 @@ Start with the **motor voltage** and work backward through the driver, fuse, wir
 | 3S | 11.1 V | 12.6 V | Supported with TB6612 when the motor is rated for it |
 | 4S | 14.8 V | 16.8 V | **Not compatible with the TB6612FNG VM limit** |
 
-For this repository's TB6612-based builds, stay at **2S or 3S**. Toshiba specifies a 13.5 V maximum operating VM range for the TB6612FNG, so a 4S pack (16.8 V when full) requires a different motor driver. citeturn303507search24
+For this repository's TB6612-based builds, stay at **2S or 3S**. Toshiba specifies a 13.5 V maximum operating VM range for the TB6612FNG, so a 4S pack (16.8 V when full) requires a different motor driver.
 
 Do not choose a higher cell count only to increase speed. Check the motor, gearbox, driver and thermal load first.
 
@@ -443,7 +455,7 @@ If motion is wrong, check wheel orientation and motor inversion before changing 
 ## 16. Project layout
 
 ```text
-RoboStriker/
+OpenSoccerBot/
 ├── README.md
 ├── BOM.csv
 ├── VERSION.txt
@@ -489,7 +501,30 @@ A few choices in this repository are deliberate:
 
 Build in stages, measure current rather than guessing it, and keep the wiring easy to trace. That makes the robot much easier to debug and upgrade.
 
+---
 
-```text
-Open Source Guide, made with ♡ by nashihab
+## Interactive web explorer
+
+The repository also includes a dependency-free interactive website under `web/`.
+
+From the repository root:
+
+```bash
+python -m http.server 8000
 ```
+
+Open `http://localhost:8000/web/`.
+
+The website visualizes the same engineering source of truth used by this repository: BASIC/ADVANCED architecture, wiring, RC mapping, battery configuration, mecanum mixing, components, firmware behavior and build steps.
+
+For GitHub Pages, the `web/` directory is static HTML/CSS/JavaScript and can be published directly as the site content.
+
+## License
+
+This project is released under the MIT License. See [`LICENSE`](LICENSE).
+
+**Open Source, Made with ♡ by nashihab**
+
+---
+
+**Open Source · Made with ♡ by nashihab**

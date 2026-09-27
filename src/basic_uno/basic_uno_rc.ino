@@ -1,5 +1,5 @@
 /*
-  SoccerBot BASIC — Arduino UNO + standard RC receiver
+  OpenSoccerBot BASIC — Arduino UNO + standard RC receiver
   Manual-control version only. No autonomy, no ball tracking.
 
   Receiver interface: standard servo PWM outputs.
@@ -40,9 +40,9 @@ const uint16_t RC_MIN_US = 1000;
 const uint16_t RC_CENTER_US = 1500;
 const uint16_t RC_MAX_US = 2000;
 const uint16_t RC_DEADBAND_US = 45;
-const uint32_t DRIVE_TIMEOUT_US = 6000;
-const uint32_t AUX_TIMEOUT_US = 5000;
-const uint16_t RC_FAILSAFE_MS = 120;
+const uint32_t DRIVE_TIMEOUT_US = 22000;
+const uint32_t AUX_TIMEOUT_US = 22000;
+const uint32_t RC_FAILSAFE_MS = 200;
 
 // Reverse a channel here instead of rewiring anything.
 const bool REVERSE_THROTTLE = false;
@@ -154,7 +154,7 @@ void setup() {
   kicker.write(KICK_REST);
   stopDrive();
 
-  Serial.println(F("SoccerBot BASIC RC receiver ready."));
+  Serial.println(F("OpenSoccerBot BASIC RC receiver ready."));
 }
 
 void loop() {

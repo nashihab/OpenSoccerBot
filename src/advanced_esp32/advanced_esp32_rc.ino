@@ -1,5 +1,5 @@
 /*
-  SoccerBot ADVANCED — ESP32 + standard RC receiver
+  OpenSoccerBot ADVANCED — ESP32 + standard RC receiver
   Manual-control version only. No autonomy, no ball tracking.
 
   Four-wheel mecanum / omni drive + dribbler + servo kicker.
@@ -55,8 +55,8 @@ const uint16_t RC_MIN_US = 1000;
 const uint16_t RC_CENTER_US = 1500;
 const uint16_t RC_MAX_US = 2000;
 const uint16_t RC_DEADBAND_US = 45;
-const uint32_t DRIVE_TIMEOUT_US = 5500;
-const uint16_t RC_FAILSAFE_MS = 120;
+const uint32_t DRIVE_TIMEOUT_US = 22000;
+const uint32_t RC_FAILSAFE_MS = 200;
 
 // Reverse a channel here if your transmitter orientation is opposite.
 const bool REVERSE_STRAFE = false;
@@ -190,7 +190,7 @@ void setup() {
   kicker.attach(KICK_SERVO_PIN, 500, 2400);
   kicker.write(KICK_REST);
 
-  Serial.println(F("SoccerBot ADVANCED RC receiver ready."));
+  Serial.println(F("OpenSoccerBot ADVANCED RC receiver ready."));
 }
 
 void loop() {
@@ -238,7 +238,8 @@ void loop() {
     if (kickRequest && !previousKick) startKick();
     previousKick = kickRequest;
 
-    setDribbler(dribbleRequest);
+    // Never run the dribbler while the kicker is moving.
+    setDribbler(dribbleRequest && !kicking);
   }
 
   if (millis() - lastGoodDriveMs > RC_FAILSAFE_MS) {

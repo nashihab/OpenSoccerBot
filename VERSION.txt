@@ -1,0 +1,3 @@
+OpenSoccerBot — RC Controller Edition
+Updated: 2026-09-27
+Revision: engineering-visual rebuild + power-range correction + firmware/documentation sanity pass
