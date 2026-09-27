@@ -13,59 +13,9 @@ The two versions use the same control concept: a conventional hobby RC transmitt
 
 The interactive engineering website is maintained as a separate repository so the hardware/firmware repository stays focused on the robot itself.
 
-**Website repository:** https://github.com/nashihab/OpenSoccerBot-site
+**Website repository:** [https://github.com/nashihab/OpenSoccerBot-site](https://nashihab.github.io/OpenSoccerBot-site/)
 
 It provides a visual interface for the same project: BASIC and ADVANCED variants, wiring, RC control mapping, battery configuration, mecanum mixing, components, firmware structure and build steps.
-
-### Run the website locally
-
-Clone the website repository:
-
-```bash
-git clone https://github.com/nashihab/OpenSoccerBot-site.git
-cd OpenSoccerBot-site
-```
-
-Start a simple local web server:
-
-```bash
-python -m http.server 8000
-```
-
-Then open:
-
-```text
-http://localhost:8000/
-```
-
-No Node.js, npm, framework build step or external CDN is required.
-
-### Publish the website with GitHub Pages
-
-The website repository is intentionally structured as a static site. To publish it from GitHub:
-
-1. Create or use `nashihab/OpenSoccerBot-site`.
-2. Put the contents of the website repository in the repository root.
-3. Push the files to the `main` branch.
-4. Open **Settings → Pages** in the website repository.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select `main` and `/(root)`, then save.
-
-The project site will use the standard GitHub Pages project URL:
-
-```text
-https://nashihab.github.io/OpenSoccerBot-site/
-```
-
-The website links back to this repository for firmware, BOM, wiring documentation and the MIT license. The two repositories therefore have separate responsibilities:
-
-```text
-OpenSoccerBot
-└── Hardware + firmware + engineering documentation
-
-OpenSoccerBot-site
-└── Interactive visual documentation + calculators + explorers
-```
 
 ## 1. System architecture
 
