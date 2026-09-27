@@ -1,0 +1,27 @@
+Category,Part,Qty,BASIC,ADVANCED,Notes
+Control,RC transmitter (FlySky FS-i6/FS-i6X or equivalent),1,Required,Required,Use a hobby RC system with a compatible PWM-output receiver
+Control,RC receiver (FlySky FS-iA6B or equivalent PWM receiver),1,1,1,Individual PWM outputs are used by the firmware
+MCU,Arduino Uno R3 or compatible,1,1,0,BASIC controller board
+MCU,ESP32 DevKit V1,1,0,1,ADVANCED controller board
+Drive,TB6612FNG dual motor driver,1,1,2,Use only within the driver's current limits
+Drive,Geared DC motor,2,2,4,Match motor voltage/current to battery and driver
+Drive,Wheel set,1,1,1,ADVANCED requires 4 mecanum wheels
+Drive,Caster/skid,1,1,0,BASIC rear/front support as desired
+Drive,Mecanum wheel,4,0,4,Matching handedness/orientation required
+Mechanism,9g servo,1,1,1,Kicker
+Mechanism,Small brushed DC motor,1,0,1,Dribbler
+Mechanism,Logic-level MOSFET module,1,0,1,Dribbler switching
+Power,Battery pack,1,1,1,Use 2S/3S with TB6612 builds; 4S requires a different driver
+Power,Buck converter/BEC 5V,1,1,1,Size for MCU+receiver+servo current
+Power,Main fuse,1,1,1,Select from measured current and wire capacity
+Power,Master switch,1,1,1,DC-rated for expected current
+Power,Battery connector (XT30/XT60 etc.),1,1,1,Match battery current
+Electrical,0.1uF ceramic capacitors,2+,1,1,Local noise suppression as appropriate
+Electrical,10uF to 47uF capacitor,2+,1,1,Place near logic/receiver where needed
+Mechanical,Chassis plate/frame,1,1,1,2WD for BASIC; rigid 4WD frame for ADVANCED
+Mechanical,Motor brackets,2+,2,4,Match selected motors
+Mechanical,Fasteners/spacers,1 set,1,1,Use vibration-resistant hardware where needed
+Wiring,Wire/connectors/heat-shrink,1 set,1,1,Choose wire gauge for actual motor current
+Safety,Cell BMS (DIY Li-ion only),1,Optional,Optional,Match exact series count and current capability
+Safety,18650/21700 matched cells (DIY Li-ion only),2+,Optional,Optional,Use identical cells and safe pack construction
+Charging,Balance charger,1,Optional,Optional,Required for appropriate LiPo/Li-ion balance charging
